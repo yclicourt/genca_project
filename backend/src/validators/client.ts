@@ -6,7 +6,11 @@ import { NextFunction, Request, Response } from "express";
 export const validatorCreateClient = [
   check("client_name").exists().notEmpty().isString(),
   check("address").exists().notEmpty().isString(),
-  check("client_ci").exists().notEmpty().isString(),
+  check("client_ci")
+    .exists()
+    .notEmpty()
+    .isNumeric()
+    .isLength({ min: 0, max: 11 }).withMessage("The customer identification number is longer than required"),
   check("frecuency").exists().notEmpty().isBoolean(),
   check("ocupation").exists().notEmpty().isString(),
   check("client_genre").exists().notEmpty().optional().isIn(["female", "male"]),

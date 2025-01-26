@@ -15,10 +15,11 @@ CREATE TABLE "Client" (
     "id" SERIAL NOT NULL,
     "client_name" TEXT NOT NULL,
     "address" TEXT NOT NULL,
-    "client_ci" INTEGER NOT NULL,
+    "client_ci" DOUBLE PRECISION NOT NULL,
     "frecuency" BOOLEAN NOT NULL DEFAULT false,
     "ocupation" TEXT NOT NULL,
     "client_genre" "Genre" NOT NULL DEFAULT 'FEMALE',
+    "order" TEXT NOT NULL,
 
     CONSTRAINT "Client_pkey" PRIMARY KEY ("id")
 );
@@ -50,6 +51,8 @@ CREATE TABLE "Organization" (
     "id" SERIAL NOT NULL,
     "address" TEXT NOT NULL,
     "level" "Level" NOT NULL DEFAULT 'MUNICIPALITY',
+    "denomination" TEXT NOT NULL,
+    "categoryEmployeeId" INTEGER NOT NULL,
 
     CONSTRAINT "Organization_pkey" PRIMARY KEY ("id")
 );
@@ -69,6 +72,9 @@ CREATE TABLE "Complaint" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Employee_email_key" ON "Employee"("email");
+
+-- AddForeignKey
+ALTER TABLE "Organization" ADD CONSTRAINT "Organization_categoryEmployeeId_fkey" FOREIGN KEY ("categoryEmployeeId") REFERENCES "Employee"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Complaint" ADD CONSTRAINT "Complaint_employeeId_fkey" FOREIGN KEY ("employeeId") REFERENCES "Employee"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

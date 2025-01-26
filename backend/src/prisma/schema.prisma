@@ -12,12 +12,11 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
 model Client {
   id           Int         @id @default(autoincrement())
   client_name  String
   address      String
-  client_ci    String
+  client_ci    Float
   frecuency    Boolean     @default(false)
   ocupation    String
   client_genre Genre       @default(FEMALE)

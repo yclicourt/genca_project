@@ -16,7 +16,7 @@ const getClientItem = async (req: Request, res: Response) => {
     data == null
       ? res
           .status(403)
-          .json({ message: `There is not record with that client` })
+          .json({ message: "There is not record with that client" })
       : res.send({ data });
   } catch (error: any) {
     error?.code == "ERR_HTTP_HEADERS_SENT"

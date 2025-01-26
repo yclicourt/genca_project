@@ -1,6 +1,6 @@
 import express from "express";
 import {
-  validatorCreateEmployee,
+  validatorRegisterEmployee,
   validatorGetEmployee,
 } from "../validators/employee";
 import {
@@ -14,11 +14,11 @@ const router = express.Router();
 
 router.get("/", getEmployeeItems);
 router.get("/:id", validatorGetEmployee, getEmployeeItem);
-router.post("/", createEmployeeItem);
+router.post("/", validatorRegisterEmployee, createEmployeeItem);
 router.put(
   "/:id",
   validatorGetEmployee,
-  validatorCreateEmployee,
+  validatorRegisterEmployee,
   updateEmployeeItem
 );
 router.delete("/:id", validatorGetEmployee, deleteEmployeeItem);

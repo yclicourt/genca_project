@@ -6,5 +6,4 @@ export interface Employee extends Auth {
   lastname: string;
   category: "directive" | "employee";
   genre: "female" | "male";
-  ocupation: string;
 }

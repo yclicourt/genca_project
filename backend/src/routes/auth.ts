@@ -1,8 +1,13 @@
-import express from "express";
+import { Router } from "express";
 
-const router = express.Router();
+import { loginCtrlEmployee, registerCtrlEmployee } from "../controllers/auth";
+import {
+  validatorLoginEmployee,
+  validatorRegisterEmployee,
+} from "../validators/employee";
+const router = Router();
 
-/* router.post();
-router.post(); */
+router.post("/register", validatorRegisterEmployee, registerCtrlEmployee);
+router.post("/login", validatorLoginEmployee, loginCtrlEmployee);
 
 export { router };

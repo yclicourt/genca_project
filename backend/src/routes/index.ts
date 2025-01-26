@@ -1,5 +1,5 @@
 import express from "express"
-import {readdirSync} from 'fs';
+import {readdirSync} from 'node:fs';
 
 const PATH_ROUTER = `${__dirname}`
 const router = express.Router()
