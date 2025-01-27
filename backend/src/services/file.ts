@@ -1,10 +1,16 @@
-/* import express from "express";
+import { File } from "../interfaces/file";
+import { PrismaClient } from "@prisma/client";
 
-const router = express.Router();
+const prisma = new PrismaClient();
 
-router.get();
-router.post();
-router.put();
-router.delete();
+const uploadFile = async ({ path, filename }: File) => {
+  const responseItem = await prisma.file.create({
+    data: {
+      path,
+      filename,
+    },
+  });
+  return responseItem;
+};
 
-export { router }; */
+export { uploadFile };

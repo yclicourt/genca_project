@@ -12,6 +12,7 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 model Client {
   id           Int         @id @default(autoincrement())
   client_name  String
@@ -38,8 +39,8 @@ model Employee {
 
 model File {
   id                   Int         @id @default(autoincrement())
-  date_file            DateTime
-  description_incident String
+  filename             String
+  path                 String
   complaint            Complaint[]
 }
 
@@ -49,7 +50,7 @@ model Organization {
   level              Level       @default(MUNICIPALITY)
   denomination       String
   categoryEmployeeId Int
-  employee           Employee    @relation(fields: [categoryEmployeeId], references: [id])
+  employee           Employee    @relation(fields: [categoryEmployeeId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   complaint          Complaint[]
 }
 
@@ -61,10 +62,10 @@ model Complaint {
   date           DateTime
   address        String
   organizationId Int
-  employee       Employee     @relation(fields: [employeeId], references: [id])
-  file           File         @relation(fields: [fileId], references: [id])
-  client         Client       @relation(fields: [clientId], references: [id])
-  organization   Organization @relation(fields: [organizationId], references: [id])
+  employee       Employee     @relation(fields: [employeeId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  file           File         @relation(fields: [fileId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  client         Client       @relation(fields: [clientId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 enum Level {
