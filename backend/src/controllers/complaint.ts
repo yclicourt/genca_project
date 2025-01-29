@@ -58,6 +58,7 @@ const createComplaintItem = async (req: Request, res: Response) => {
     const data = await createComplaint(body);
     res.send({ data });
   } catch (error: any) {
+    console.log(error)
     error?.code == "P2003"
       ? res.status(404).json({ message: "Foreign key constraint failed" })
       : handleHttp(res, "ERROR_CREATE_COMPLAINT");

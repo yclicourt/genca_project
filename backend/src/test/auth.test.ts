@@ -1,3 +1,4 @@
+import { response } from "express";
 import app from "../app";
 import request from "supertest";
 
@@ -12,5 +13,15 @@ describe("POST /auth", () => {
       password: "test password",
     });
     expect(response.statusCode).toBe(200);
+  });
+});
+
+describe("POST /api/v1/login", () => {
+  test("should login succeffully with a token correctly", async () => {
+    const response = await api.post("/api/v1/auth/login").send({
+      email: "test@admin.com",
+      password: "test password",
+    })
+    expect(response.statusCode).toBe(200)
   });
 });

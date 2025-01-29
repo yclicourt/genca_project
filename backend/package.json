@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "node ./src/server.js",
     "test":"jest",
-    "test:watch": "jest --watchAll --detectOpenHandles"
+    "test:watch": "jest --watchAll --silent --detectOpenHandles"
   },
   "keywords": [],
   "author": "",

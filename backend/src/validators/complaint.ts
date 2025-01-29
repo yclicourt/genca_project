@@ -13,7 +13,7 @@ export const validatorCreateComplaint = [
   check("employeeId").exists().isNumeric(),
   check("fileId").exists().isNumeric(),
   check("clientId").exists().isNumeric(),
-  check("date").exists().isDate(),
+  check("date").exists().isISO8601().withMessage("Date must be in ISO8601 format (YYYY-MM-DD)"),
   check("address").exists().isString(),
   check("organizationId").exists().isNumeric(),
   (req: Request, res: Response, next: NextFunction) =>

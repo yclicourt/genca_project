@@ -8,7 +8,6 @@ export const validatorCreateOrganization = [
   check("denomination").exists().notEmpty().isString(),
   check("categoryEmployeeId").exists().isNumeric(),
   check("genre").exists().notEmpty().optional().isIn(["female", "male"]),
-  check("").exists().notEmpty().isString(),
   (req: Request, res: Response, next: NextFunction) =>
     validateResult(req, res, next),
 ];

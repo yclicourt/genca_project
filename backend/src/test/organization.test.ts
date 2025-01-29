@@ -18,7 +18,7 @@ describe("POST /organization", () => {
     const response = await api.post("/api/v1/organization").send({
       address: "test address",
       level: "NATION",
-      categoryEmployeeId: 2,
+      categoryEmployeeId: 3,
       denomination: "test denomination",
     });
     expect(response.statusCode).toBe(200);
