@@ -1,10 +1,11 @@
-import express from "express"
-import {corsMiddleware} from "./middleware/cors"
-import {router} from './routes';
+import express from "express";
+import { corsMiddleware } from "./middleware/cors";
+import { router } from "./routes";
 
-const app = express()
+const app = express();
 
-app.use(corsMiddleware())
-app.use(express.json())
-app.use("/api/v1",router)
-export default app
+app.use(corsMiddleware());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/api/v1", router);
+export default app;

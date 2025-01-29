@@ -7,7 +7,7 @@ import {
 } from "../validators/employee";
 const router = Router();
 
-router.post("/register", validatorRegisterEmployee, registerCtrlEmployee);
+router.post("/register",validatorRegisterEmployee, registerCtrlEmployee);
 router.post("/login", validatorLoginEmployee, loginCtrlEmployee);
 
 export { router };

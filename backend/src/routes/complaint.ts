@@ -13,11 +13,11 @@ import {
 } from "../validators/complaint";
 const router = express.Router();
 
-router.get("/", validatorGetComplaint, getComplaintItems);
-router.get("/:id", validatorGetComplaint, getComplaintItem);
-router.get("/:id/client/", validatorGetComplaint, getComplaintByClientItem);
-router.post("/", validatorCreateComplaint, createComplaintItem);
-router.put("/:id",validatorGetComplaint,validatorCreateComplaint, updateComplaintItem);
-router.delete("/:id", validatorGetComplaint,deleteComplaintItem);
+router.get("/", getComplaintItems);
+router.get("/:id",validatorGetComplaint, getComplaintItem);
+router.get("/:id/client/", getComplaintByClientItem);
+router.post("/",validatorCreateComplaint, createComplaintItem);
+router.put("/:id",validatorGetComplaint, updateComplaintItem);
+router.delete("/:id",validatorGetComplaint, deleteComplaintItem);
 
 export { router };

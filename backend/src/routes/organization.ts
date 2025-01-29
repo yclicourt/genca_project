@@ -10,10 +10,10 @@ import { validatorCreateOrganization, validatorGetOrganization } from "../valida
 
 const router = express.Router();
 
-router.get("/",validatorGetOrganization, getOrganizationItems);
-router.get("/:id", validatorGetOrganization,getOrganizationItem);
-router.post("/",validatorCreateOrganization,createOrganizationItem);
-router.put("/:id",validatorGetOrganization,validatorCreateOrganization, updateOrganizationItem);
+router.get("/", getOrganizationItems);
+router.get("/:id",validatorGetOrganization,getOrganizationItem);
+router.post("/", validatorCreateOrganization,createOrganizationItem);
+router.put("/:id", validatorGetOrganization,updateOrganizationItem);
 router.delete("/:id", validatorGetOrganization,deleteOrganizationItem);
 
 export { router };

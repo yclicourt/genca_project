@@ -12,15 +12,14 @@ import {
 } from "../controllers/employee";
 const router = express.Router();
 
-router.get("/", validatorGetEmployee,getEmployeeItems);
-router.get("/:id", validatorGetEmployee, getEmployeeItem);
+router.get("/", getEmployeeItems);
+router.get("/:id",  validatorGetEmployee, getEmployeeItem);
 router.post("/", validatorRegisterEmployee, createEmployeeItem);
 router.put(
   "/:id",
-  validatorGetEmployee,
   validatorRegisterEmployee,
   updateEmployeeItem
 );
-router.delete("/:id", validatorGetEmployee, deleteEmployeeItem);
+router.delete("/:id",  deleteEmployeeItem);
 
 export { router };

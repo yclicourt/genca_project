@@ -17,6 +17,18 @@ services:
       - vol_postgres:/var/lib/postgresql/data
     networks:
       - genca_network
+  dbtest:
+    image: postgres
+    container_name: gencadb_test
+    restart: always
+    env_file:
+      - ./src/.env_test
+    ports:
+      - "5433:5432"
+    volumes:
+      - vol_postgres:/var/lib/postgresql/data
+    networks:
+      - genca_network
 
 networks:
   genca_network:
