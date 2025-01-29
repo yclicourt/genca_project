@@ -12,7 +12,7 @@ import {
 } from "../controllers/employee";
 const router = express.Router();
 
-router.get("/", getEmployeeItems);
+router.get("/", validatorGetEmployee,getEmployeeItems);
 router.get("/:id", validatorGetEmployee, getEmployeeItem);
 router.post("/", validatorRegisterEmployee, createEmployeeItem);
 router.put(

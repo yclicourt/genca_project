@@ -18,7 +18,6 @@ const getOrganizationItem = async (req: Request, res: Response) => {
           .json({ message: `There is not record with that organization` })
       : res.send({ data });
   } catch (error: any) {
-    console.log(error);
     error?.code == "ERR_HTTP_HEADERS_SENT"
       ? res.status(404).json({ message: "Organization not found" })
       : handleHttp(res, "ERROR_GET_ORGANIZATION");

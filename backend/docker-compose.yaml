@@ -7,7 +7,7 @@ services:
   #     - ./src/.env
   db:
     image: postgres
-    container_name: storedb
+    container_name: gencadb
     restart: always
     env_file:
       - ./src/.env

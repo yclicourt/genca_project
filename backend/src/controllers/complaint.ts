@@ -22,8 +22,8 @@ const getComplaintItems = async (req: Request, res: Response) => {
 
 const getComplaintItem = async (req: Request, res: Response) => {
   try {
-    const { id } = matchedData(req);
-    const data = await getComplaint(id);
+    const { id } = req.params;
+    const data = await getComplaint(parseInt(id));
     data == null
       ? res
           .status(403)
@@ -38,12 +38,12 @@ const getComplaintItem = async (req: Request, res: Response) => {
 
 const getComplaintByClientItem = async (req: Request, res: Response) => {
   try {
-    const { id } = matchedData(req);
-    const data = await getClientByComplaint(id);
-    data == null
-      ? res
-          .status(403)
-          .json({ message: "There is not record with that complaint" })
+    const { id } = req.params;
+    const data = await getClientByComplaint(parseInt(id));
+    data?.clientId != parseInt(id)
+      ? res.status(403).json({
+          message: "There is not complaint elaborate with that client",
+        })
       : res.send({ data });
   } catch (error: any) {
     error?.code == "ERR_HTTP_HEADERS_SENT"
@@ -58,10 +58,9 @@ const createComplaintItem = async (req: Request, res: Response) => {
     const data = await createComplaint(body);
     res.send({ data });
   } catch (error: any) {
-    console.log(error)
-   /*  error?.code == "P2003"
+    error?.code == "P2003"
       ? res.status(404).json({ message: "Foreign key constraint failed" })
-      : */ handleHttp(res, "ERROR_CREATE_COMPLAINT");
+      : handleHttp(res, "ERROR_CREATE_COMPLAINT");
   }
 };
 

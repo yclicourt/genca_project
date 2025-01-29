@@ -9,6 +9,7 @@ const getComplaint = async (id: number) => {
       id,
     },
   });
+  return responseComplaint;
 };
 
 const getComplaints = async () => {

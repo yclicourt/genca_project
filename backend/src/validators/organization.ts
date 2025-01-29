@@ -13,7 +13,7 @@ export const validatorCreateOrganization = [
     validateResult(req, res, next),
 ];
 
-export const validatorGetEmployee = [
+export const validatorGetOrganization = [
   check("id").exists().notEmpty().isNumeric(),
   (req: Request, res: Response, next: NextFunction) =>
     validateResult(req, res, next),

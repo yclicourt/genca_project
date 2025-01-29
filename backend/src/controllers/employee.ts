@@ -18,7 +18,6 @@ const getEmployeeItem = async (req: Request, res: Response) => {
           .json({ message: `There is not record with that employee` })
       : res.send({ data });
   } catch (error: any) {
-    console.log(error);
     error?.code == "ERR_HTTP_HEADERS_SENT"
       ? res.status(404).json({ message: "Employee not found" })
       : handleHttp(res, "ERROR_GET_EMPLOYEE");
